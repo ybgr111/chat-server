@@ -11,7 +11,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
-	desc "github.com/ybgr111/chat-server/grpc/pkg/note_v1"
+	desc "github.com/ybgr111/chat-server/pkg/note_v1"
 )
 
 const (
