@@ -8,7 +8,7 @@ create table message (
     id serial primary key,
     "from" text not null,
     text text not null,
-    timestamp timestamp
+    timestamp timestamp not null
 );
 
 -- +goose Down
