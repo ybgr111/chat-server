@@ -9,7 +9,6 @@ import (
 	"github.com/jackc/pgconn"
 	"github.com/jackc/pgx/v4"
 	"github.com/jackc/pgx/v4/pgxpool"
-
 	"github.com/ybgr111/chat-server/internal/client/db"
 	"github.com/ybgr111/chat-server/internal/client/db/prettier"
 )

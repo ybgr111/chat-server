@@ -2,6 +2,7 @@ package chat
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	sq "github.com/Masterminds/squirrel"
@@ -34,7 +35,7 @@ func (r *repo) Create(ctx context.Context, chat *chatModel.Chat) (int64, error) 
 		PlaceholderFormat(sq.Dollar).
 		Columns(usernamesColumn).
 		Values(chat.Usernames).
-		Suffix("RETURNING id")
+		Suffix(fmt.Sprintf("RETURNING %s", idColumn))
 
 	query, args, err := builderInsert.ToSql()
 	if err != nil {
@@ -58,7 +59,7 @@ func (r *repo) Create(ctx context.Context, chat *chatModel.Chat) (int64, error) 
 func (r *repo) Delete(ctx context.Context, id int64) error {
 	builderUpdate := sq.Delete(chatTable).
 		PlaceholderFormat(sq.Dollar).
-		Where(sq.Eq{"id": id})
+		Where(sq.Eq{idColumn: id})
 
 	query, args, err := builderUpdate.ToSql()
 	if err != nil {
@@ -87,7 +88,7 @@ func (r *repo) SendMessage(ctx context.Context, message *chatModel.Message) erro
 		PlaceholderFormat(sq.Dollar).
 		Columns(fromColumn, textColumn, timestampColumn).
 		Values(message.From, message.Text, time.Now()).
-		Suffix("RETURNING id")
+		Suffix(fmt.Sprintf("RETURNING %s", idColumn))
 
 	query, args, err := builderInsert.ToSql()
 	if err != nil {
