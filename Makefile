@@ -35,11 +35,11 @@ build:
 	GOOS=linux GOARCH=amd64 go build -o service_linux cmd/grpc_server/main.go
 
 copy-to-server:
-	scp service_linux root@185.91.52.223:
+	scp service_linux root@185.91.54.9:
 
 docker-build-and-push:
 	docker buildx build --no-cache --platform linux/amd64 -t cr.selcloud.ru/ybgr111/chat-server:v0.0.1 .
-	docker login -u token -p CRgAAAAAmIxM5SY6qVc7pMYCMUQDKkRmX0KBpU3A cr.selcloud.ru/ybgr111
+	docker login -u token -p CRgAAAAAimq2epQmXJESN6mX2sXlwC6Wcd8Moxj1 cr.selcloud.ru/ybgr111
 	docker push cr.selcloud.ru/ybgr111/chat-server:v0.0.1
 
 ##migrations
@@ -51,3 +51,19 @@ local-migration-up:
 
 local-migration-down:
 	${LOCAL_BIN}/goose -dir ${LOCAL_MIGRATION_DIR} postgres ${LOCAL_MIGRATION_DSN} down -v
+
+##tests
+.PHONY: test
+test:
+	go clean -testcache
+	go test ./... -covermode count -coverpkg=github.com/ybgr111/chat-server/internal/service/...,github.com/ybgr111/chat-server/internal/api/... -count 5
+
+.PHONY: test-coverage
+test-coverage:
+	go clean -testcache
+	go test ./... -coverprofile=coverage.tmp.out -covermode count -coverpkg=github.com/ybgr111/chat-server/internal/service/...,github.com/ybgr111/chat-server/internal/api/... -count 5
+	grep -v 'mocks\|config' coverage.tmp.out  > coverage.out
+	rm coverage.tmp.out
+	go tool cover -html=coverage.out;
+	go tool cover -func=./coverage.out | grep "total";
+	grep -sqFx "/coverage.out" .gitignore || echo "/coverage.out" >> .gitignore

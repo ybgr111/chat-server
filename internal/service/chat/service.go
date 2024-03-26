@@ -1,9 +1,9 @@
 package chat
 
 import (
-	"github.com/ybgr111/chat-server/internal/client/db"
 	"github.com/ybgr111/chat-server/internal/repository"
 	"github.com/ybgr111/chat-server/internal/service"
+	"github.com/ybgr111/platform_common/pkg/db"
 )
 
 type serv struct {

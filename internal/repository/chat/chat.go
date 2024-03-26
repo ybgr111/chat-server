@@ -7,9 +7,9 @@ import (
 
 	sq "github.com/Masterminds/squirrel"
 	"github.com/pkg/errors"
-	"github.com/ybgr111/chat-server/internal/client/db"
 	"github.com/ybgr111/chat-server/internal/repository"
 	chatModel "github.com/ybgr111/chat-server/internal/repository/chat/model"
+	"github.com/ybgr111/platform_common/pkg/db"
 )
 
 const (

@@ -5,16 +5,18 @@ import (
 	"log"
 
 	"github.com/ybgr111/chat-server/internal/api/chat"
-	"github.com/ybgr111/chat-server/internal/client/db"
-	"github.com/ybgr111/chat-server/internal/client/db/pg"
-	"github.com/ybgr111/chat-server/internal/client/db/transaction"
-	"github.com/ybgr111/chat-server/internal/closer"
 	"github.com/ybgr111/chat-server/internal/config"
 	"github.com/ybgr111/chat-server/internal/config/env"
 	"github.com/ybgr111/chat-server/internal/repository"
-	chatRepository "github.com/ybgr111/chat-server/internal/repository/chat"
 	"github.com/ybgr111/chat-server/internal/service"
+
+	chatRepository "github.com/ybgr111/chat-server/internal/repository/chat"
 	chatService "github.com/ybgr111/chat-server/internal/service/chat"
+
+	"github.com/ybgr111/platform_common/pkg/closer"
+	"github.com/ybgr111/platform_common/pkg/db"
+	"github.com/ybgr111/platform_common/pkg/db/pg"
+	"github.com/ybgr111/platform_common/pkg/db/transaction"
 )
 
 type serviceProvider struct {
