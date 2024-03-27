@@ -21,7 +21,6 @@ type httpConfig struct {
 }
 
 func NewHTTPConfig() (*httpConfig, error) {
-
 	host := os.Getenv(httpHostEnvName)
 	if len(host) == 0 {
 		return nil, errors.New("http host not found")
