@@ -14,7 +14,7 @@ import (
 	"github.com/ybgr111/chat-server/internal/model"
 	"github.com/ybgr111/chat-server/internal/service"
 	serviceMocks "github.com/ybgr111/chat-server/internal/service/mocks"
-	desc "github.com/ybgr111/chat-server/pkg/note_v1"
+	desc "github.com/ybgr111/chat-server/pkg/chat_v1"
 )
 
 func TestSendMessage(t *testing.T) {
