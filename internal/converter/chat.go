@@ -2,7 +2,7 @@ package converter
 
 import (
 	"github.com/ybgr111/chat-server/internal/model"
-	desc "github.com/ybgr111/chat-server/pkg/note_v1"
+	desc "github.com/ybgr111/chat-server/pkg/chat_v1"
 )
 
 func ToChat(users *desc.Users) *model.Chat {

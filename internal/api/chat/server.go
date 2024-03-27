@@ -2,11 +2,11 @@ package chat
 
 import (
 	"github.com/ybgr111/chat-server/internal/service"
-	desc "github.com/ybgr111/chat-server/pkg/note_v1"
+	desc "github.com/ybgr111/chat-server/pkg/chat_v1"
 )
 
 type Server struct {
-	desc.UnimplementedNoteV1Server
+	desc.UnimplementedChatV1Server
 	chatService service.ChatService
 }
 

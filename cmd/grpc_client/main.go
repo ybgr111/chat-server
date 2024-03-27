@@ -11,7 +11,7 @@ import (
 
 	"github.com/brianvoe/gofakeit"
 	"github.com/fatih/color"
-	desc "github.com/ybgr111/chat-server/pkg/note_v1"
+	desc "github.com/ybgr111/chat-server/pkg/chat_v1"
 )
 
 const (
@@ -26,7 +26,7 @@ func main() {
 	}
 	defer conn.Close()
 
-	c := desc.NewNoteV1Client(conn)
+	c := desc.NewChatV1Client(conn)
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()

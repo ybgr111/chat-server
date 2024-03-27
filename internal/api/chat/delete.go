@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/golang/protobuf/ptypes/empty"
-	desc "github.com/ybgr111/chat-server/pkg/note_v1"
+	desc "github.com/ybgr111/chat-server/pkg/chat_v1"
 )
 
 func (i *Server) Delete(ctx context.Context, req *desc.DeleteRequest) (*empty.Empty, error) {
