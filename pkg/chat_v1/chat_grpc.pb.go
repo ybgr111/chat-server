@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.12.4
-// source: user.proto
+// source: chat.proto
 
 package chat_v1
 
@@ -28,15 +28,15 @@ type ChatV1Client interface {
 	SendMessage(ctx context.Context, in *SendMessageRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
-type userV1Client struct {
+type chatV1Client struct {
 	cc grpc.ClientConnInterface
 }
 
 func NewChatV1Client(cc grpc.ClientConnInterface) ChatV1Client {
-	return &userV1Client{cc}
+	return &chatV1Client{cc}
 }
 
-func (c *userV1Client) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
+func (c *chatV1Client) Create(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
 	out := new(CreateResponse)
 	err := c.cc.Invoke(ctx, "/chat_v1.ChatV1/Create", in, out, opts...)
 	if err != nil {
@@ -45,7 +45,7 @@ func (c *userV1Client) Create(ctx context.Context, in *CreateRequest, opts ...gr
 	return out, nil
 }
 
-func (c *userV1Client) Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+func (c *chatV1Client) Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/chat_v1.ChatV1/Delete", in, out, opts...)
 	if err != nil {
@@ -54,7 +54,7 @@ func (c *userV1Client) Delete(ctx context.Context, in *DeleteRequest, opts ...gr
 	return out, nil
 }
 
-func (c *userV1Client) SendMessage(ctx context.Context, in *SendMessageRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+func (c *chatV1Client) SendMessage(ctx context.Context, in *SendMessageRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/chat_v1.ChatV1/SendMessage", in, out, opts...)
 	if err != nil {
@@ -174,5 +174,5 @@ var ChatV1_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "user.proto",
+	Metadata: "chat.proto",
 }

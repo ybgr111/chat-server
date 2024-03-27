@@ -21,9 +21,9 @@ get-deps:
 
 
 generate:
-	make generate-user-api
+	make generate-chat-api
 
-generate-user-api:
+generate-chat-api:
 	mkdir -p pkg/chat_v1
 	protoc --proto_path api/chat_v1 --proto_path vendor.protogen \
 	--go_out=pkg/chat_v1 --go_opt=paths=source_relative \
@@ -34,7 +34,7 @@ generate-user-api:
 	--plugin=protoc-gen-validate=bin/protoc-gen-validate \
 	--grpc-gateway_out=pkg/chat_v1 --grpc-gateway_opt=paths=source_relative \
 	--plugin=protoc-gen-grpc-gateway=bin/protoc-gen-grpc-gateway \
-	api/chat_v1/user.proto
+	api/chat_v1/chat.proto
 
 ##build
 build:
